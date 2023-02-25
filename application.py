@@ -332,7 +332,7 @@ def generate_recommendation_prompt(config):
 def call_summary_api(the_prompt):
     # update values
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=the_prompt,
         max_tokens=700,
         temperature=.5,
@@ -351,7 +351,7 @@ def call_summary_api(the_prompt):
 def call_response_api(the_prompt):
     # update values
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=the_prompt,
         max_tokens=400,
         temperature=.7,
@@ -371,7 +371,7 @@ def call_response_api(the_prompt):
 def call_question_api(the_prompt):
     # update values
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=the_prompt,
         max_tokens=400,
         temperature=.7,
@@ -388,7 +388,7 @@ def call_question_api(the_prompt):
 def call_recommendation_api(the_prompt):
     # update values
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=the_prompt,
         max_tokens=500,
         temperature=1,
@@ -588,7 +588,7 @@ def generate_conversation_prompt(config):
 def call_conversation_api(the_prompt):
     # update values
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=the_prompt,
         max_tokens=400,
         temperature=.7,
@@ -622,6 +622,16 @@ def call_therapist_responses(msg, namespace):
     if len(conversation_tokens) + response_tokens > 2048:
         conversation_config.pop(0)
         generated_prompt = generate_conversation_prompt(conversation_config)
+
+    print()
+    print()
+    print()
+    print()
+    print(generated_prompt)
+    print()
+    print()
+    print()
+    print()
 
     # Call Response API
     response_response = call_conversation_api(generated_prompt)
